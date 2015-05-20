@@ -1,0 +1,418 @@
+<div class="viewport">
+	<!-- BEGIN cartno -->
+	<div class="cartEempty">
+		<p>购物车还是空的，快去看看热销商品吧~</p>
+		<a class="grayBtn" href="javascript:void(0);" onclick="_PHONE('DkJs.gotoShop');">去购物</a>
+	</div>
+	<!-- END cartno -->
+
+	<!-- BEGIN cartyes -->
+	<div class="cartTopTxt">订单满{_ORDER-DFREE_}元包邮<a href="javascript:void(0);" onclick="_PHONE('DkJs.gotoUrl', 4, 'http://{_MOBILEHOST_}/shop4/cart_sel.php?&passport={_PASSPORT_}&corpid={_VCORPID_}&rec=1', '凑单商品', '完成', '');">查看凑单商品></a></div>
+	<div class="cartWrap">
+		<!-- BEGIN cartitem_row -->
+		<div class="item {_ITEM-CLASS_}" id="items_{_ITEM-IDX_}">
+			<p class="tp {_ITEM-RHIDE_}"><strong>{_ITEM-RNAME_}</strong><span class="ts">{_ITEM-RTIP_}</span></p>
+			<!-- BEGIN cartitem_col -->
+			<div id="item_{_ITEM-GIFTID_}" class="intro cfix dev_samerule">
+				<label class="checkbox" for="chks_{_ITEM-GIFTID_}"><input type="checkbox" name="chks" id="chks_{_ITEM-GIFTID_}" {_ITEM-CHK_} data-fee="{_ITEM-FEE_}" data-coin="{_ITEM-COIN_}" data-father="0" data-child="{_ITEM-HGIFTID_}" data-idx="{_ITEM-IDX_}" data-dfree="{_ITEM-DFREE_}" data-yrmb="{_ITEM-YRMB_}" value="{_ITEM-GIFTID_}" onclick="return onSelClick({_ITEM-GIFTID_});"/><b></b></label>
+				<div class="cell_1">
+					<a href="http://{_MOBILEHOST_}/shop/rmbdetail.php?&passport={_PASSPORT_}&corpid={_VCORPID_}&giftid={_ITEM-JUMPID_}"><img src="{_ITEM-PIC_}" alt="">{_ITEM-STIP_}</a>
+				</div>
+				<div class="cell_2">
+					<h3><a href="http://{_MOBILEHOST_}/shop/rmbdetail.php?&passport={_PASSPORT_}&corpid={_VCORPID_}&giftid={_ITEM-JUMPID_}">{_ITEM-DNAME_}{_ITEM-NAME_}</a></h3>
+					<p>&yen;{_ITEM-RMB_} <span class="{_ITEM-COIN-HIDD_}">+{_ITEM-COIN_}金币</span></p>
+					<p>{_ITEM-COND_}</p>
+					<p class="dev_noedit">x<span id="num_{_ITEM-GIFTID_}">{_ITEM-NUM_}</span></p>
+					<div class="cfix dev_edit hidd">
+						<span class="set_amount">
+							<b class="reduce" onclick="return onAddClick({_ITEM-GIFTID_}, -1, {_ITEM-GNUM_});">-</b>
+							<input type="tel" id="anum_{_ITEM-GIFTID_}" class="amount" value="{_ITEM-NUM_}">
+							<b class="add" onclick="return onAddClick({_ITEM-GIFTID_}, 1, {_ITEM-GNUM_});">+</b>
+						</span>
+					</div>
+				</div>
+				<span class="del" onclick="_PHONE('DkJs.showConfimDialog', 3, '确认要删除该商品吗？', '_phone_deleteConfirm', '{_ITEM-GIFTID_}_0');">删除</span>
+			</div>
+			<!-- BEGIN {_ITEM-ZGIFT_} -->
+			<div class="row cfix">
+				<span class="zp">赠品x{_ITEM-NUM_}：<img src="{_ITEM-ZPIC_}" width="25" height="25">{_ITEM-ZNAME_}</span>
+			</div>
+			<!-- END {_ITEM-ZGIFT_} -->
+
+			<!-- BEGIN {_ITEM-TICKET_} -->
+			<!-- BEGIN {_TICKET-YES_} -->
+			<div class="row cfix">
+				<span class="fl c6e">折后价格：&yen;{_ITEM-IRMB_}</span>
+			</div>
+			<div class="cell cfix">
+				{_ITEM-CHTML_}
+				<span class="addYhq" onclick="_PHONE('DkJs.gotoUrl', 4, 'http://{_MOBILEHOST_}/shop4/selticket.php?&passport={_PASSPORT_}&corpid={_VCORPID_}&objid={_ITEM-GIFTID_}&objpid={_ITEM-JUMPID_}&objnum={_ITEM-NUM_}', '优惠券', '', '');"><i>+</i></span>
+			</div>
+			<!-- END {_TICKET-YES_} -->
+			<!-- BEGIN {_TICKET-NO_} -->
+			<div class="row cfix">
+				<a class="more" href="javascript:void(0);" onclick="_PHONE('DkJs.gotoUrl', 4, 'http://{_MOBILEHOST_}/shop4/selticket.php?&passport={_PASSPORT_}&corpid={_VCORPID_}&objid={_ITEM-GIFTID_}&objpid={_ITEM-JUMPID_}&objnum={_ITEM-NUM_}', '优惠券', '', '');">有可用优惠券</a>
+			</div>
+			<!-- END {_TICKET-NO_} -->
+			<!-- BEGIN {_ITEM-NOTICKET_} -->
+			<div class="row cfix">
+				<p class="tar c6e">不支持使用现金券</p>
+			</div>
+			<!-- END {_ITEM-NOTICKET_} -->
+
+
+			<!-- END {_ITEM-TICKET_} -->
+
+			<!-- END cartitem_col -->
+
+			<!-- BEGIN {_ITEM-HGIFT_} -->
+			<div class="intro cfix" id="hgift_{_ITEM-HGIFTID_}">
+				<label class="checkbox" for="chks_{_ITEM-HGIFTID_}"><input type="checkbox" name="chks" id="chks_{_ITEM-HGIFTID_}" {_ITEM-HCHK_} data-fee="{_ITEM-HFEE_}" data-father="{_ITEM-GIFTID_}" data-idx="{_ITEM-IDX_}" data-dfree="-1" data-yrmb="0" value="{_ITEM-HGIFTID_}" onclick="return onSelClick({_ITEM-HGIFTID_});"/><b></b></label>
+				<div class="cell_1">
+					<a href="http://{_MOBILEHOST_}/shop/rmbdetail.php?&passport={_PASSPORT_}&corpid={_VCORPID_}&giftid={_ITEM-HJUMPID_}"><img src="{_ITEM-HPIC_}" alt="">{_ITEM-HSTIP_}</a>
+				</div>
+				<div class="cell_2">
+					<h3><a href="http://{_MOBILEHOST_}/shop/rmbdetail.php?&passport={_PASSPORT_}&corpid={_VCORPID_}&giftid={_ITEM-HJUMPID_}">{_ITEM-HNAME_}</a></h3>
+					<p>&yen;{_ITEM-HRMB_}</p>
+					<p>{_ITEM-HCOND_}</p>
+					<p>x<span id="num_{_ITEM-HGIFTID_}">{_ITEM-HNUM_}</span></p>
+					<input type="hidden" id="anum_{_ITEM-HGIFTID_}" value="{_ITEM-HNUM_}">
+				</div>
+				<span class="del" onclick="_PHONE('DkJs.showConfimDialog', 3, '确认要删除该商品吗？', '_phone_deleteConfirm', '{_ITEM-GIFTID_}_{_ITEM-HGIFTID_}');">删除</span>
+			</div>
+			<!-- END {_ITEM-HGIFT_} -->
+			
+			<div class="row cfix">
+				<!-- BEGIN {_ITEM-HSEL_} -->
+				<a class="more" href="javascript:void(0);" onclick="_PHONE('DkJs.gotoUrl', 4, 'http://{_MOBILEHOST_}/shop4/cart_sel.php?&passport={_PASSPORT_}&corpid={_VCORPID_}&ruleid={_ITEM-RULEID_}&cgiftid={_ITEM-GIFTID_}&giftid={_ITEM-HGIFTID_}', '可换购商品', '完成', '');">可换购商品</a>
+				<!-- END {_ITEM-HSEL_} -->
+				
+				<!-- BEGIN {_ITEM-HMAN_} -->
+				<a class="more" href="javascript:void(0);" onclick="_PHONE('DkJs.gotoUrl', 4, 'http://{_MOBILEHOST_}/shop4/cart_sel.php?&passport={_PASSPORT_}&corpid={_VCORPID_}&ruleid={_ITEM-RULEID_}&cgiftid={_ITEM-GIFTID_}&giftid={_ITEM-HGIFTID_}', '满减商品', '完成', '');">更多满减商品</a>
+				<!-- END {_ITEM-HMAN_} -->
+
+				<span class="price">小计：&yen;{_ITEM-TOTAL_} <span class="{_ITEM-COIN-TOTAL-HIDD_}">+{_ITEM-COIN-TOTAL_}金币</span></span>
+				<span class="yh">{_ITEM-CTIP_}</span>
+			</div>
+
+
+		</div>
+		<!-- END cartitem_row -->
+	</div>
+	<!-- END cartyes -->
+</div>
+
+<script type="text/javascript">
+var _isedit = false;
+var _selids = "";
+var _ogifts = "";
+var _dfree  = 0;
+var _ormb   = 0;
+var _ocut   = 0;
+var _ocoin	= 0;	//金币数
+function _bodyonload()
+{
+	refreshSelectData();
+}
+function saveCartSelect()
+{
+	var carts = _phone_endEditCart();
+	var url   = "http://{_APIHOST_}/phone/shop.php";
+	var pars  = "act=editcart&passport={_PASSPORT_}&corpid={_VCORPID_}&issel=1&carts="+carts+"&r=" + Math.random();
+	_PHONE('DkJs.postAgent', 4, url, pars, '', '');
+}
+function _phone_selectCartAll( selected )
+{
+	$("input[name=chks]").prop("checked", selected==1 ? true : false );
+	refreshSelectData();
+	saveCartSelect();
+}
+function _phone_startEditCart()
+{
+	_selids = "";
+	_isedit = true;
+	$("input[name=chks]").each(function(){
+		if( $(this).is(":checked") )
+		{
+			_selids += $(this).val()+",";
+			$(this).prop("checked", false);
+		}
+	});
+
+	$(".dev_noedit").hide();
+	$(".dev_edit").show();
+}
+function _phone_endEditCart()
+{
+	var carts = '';
+	$("input[name=chks]").each(function(){
+		if( $(this).attr("data-father") == 0 )
+		{
+			var giftid = $(this).val();
+			var hgiftid= $(this).attr("data-child");
+			var issel  = ($(this).is(":checked") || _selids.indexOf(giftid)>=0) ? 1 : 0;
+			var xissel = 0;
+			if( hgiftid )
+			{
+				if( $("#chks_"+hgiftid).is(":checked") || _selids.indexOf(hgiftid)>=0 )
+				{
+					xissel = 1;
+				}
+			}
+			carts += giftid + ":" + $("#anum_"+giftid).val() + ":" + issel + ":" + xissel + ",";
+		}
+	});
+
+	return carts;
+}
+function _phone_afterSaveCart( r )
+{
+	if( r )
+	{
+		window.location.reload();
+		return;
+	}
+
+	_isedit = false;
+	$("input[name=chks]").each(function(){ 
+		var giftid = $(this).val();
+		if( r )
+		{
+			$("#num_"+giftid).html( $("#anum_"+giftid).val() );
+		}
+		else
+		{
+			$("#anum_"+giftid).val( $("#num_"+giftid).html() );
+		}
+	});
+	
+	$(".dev_edit").hide();
+	$(".dev_noedit").show();
+
+	if( _selids )
+	{
+		var giftids = _selids.split( ',' );
+		for( var i=0; i<giftids.length; i++ )
+		{
+			$("#chks_"+giftids[i]).prop("checked", true);
+		}
+	}
+	refreshSelectData();
+}
+function _phone_afterDelCart( req, selfpar )
+{
+	var arr = selfpar.split( "," );
+	var giftid  = arr[ 0 ];
+	var hgiftid = arr.length>=2 ? arr[ 1 ] : 0;
+
+	var r = $.parseJSON(req);
+	if( r && r.ret == "succ" )
+	{
+		if( hgiftid > 0 )
+		{
+			$("#hgift_"+hgiftid).remove();
+		}
+		else
+		{
+			var o = $("#item_"+giftid);
+			var n = o.parent('div').children(".dev_samerule").length;
+			if( n > 1 || $(".dev_samerule").length <= 1 )
+			{
+				window.location.reload();
+				return;
+			}
+			o.parent('div').remove();
+		}
+		refreshSelectData();
+	}
+}
+//[去结算] 跳转到填写订单界面
+function _phone_gotoOrder()
+{
+	if( _ogifts )
+	{
+		var gifts = _ormb + ";" + _ocut + ";" + _dfree + ";" + _ogifts + ";" + _ocoin;	//加入金币总数	2015/5/6 lixin
+		var url = "http://{_MOBILEHOST_}/shop4/neworder.php";
+		url += "?passport={_PASSPORT_}&corpid={_VCORPID_}&gifts="+gifts+"&r="+Math.random();
+
+		_PHONE('DkJs.gotoOrder', 2, url, '填写订单');
+	}
+	else
+	{
+		_PHONE('DkJs.alert', 1, '请选择商品');
+	}
+}
+function onAddClick(giftid, n, gnum)
+{
+	var anum = $("#anum_"+giftid).val() * 1;
+	anum += n;
+	if( anum > gnum ) anum = gnum;
+	if( anum <= 0 ) anum = 0;
+
+	$("#anum_"+giftid).val( anum );
+}
+function onSelClick(xid)
+{
+	var o = $("#chks_"+xid);
+	var idx = o.attr( "data-idx" );
+	if( $("#items_"+idx).hasClass("soldout") )
+	{
+		o.prop("checked", false );
+		_PHONE('DkJs.alert', 1, '该商品已抢光');
+		return false;
+	}
+
+	if( o.is(":checked") )
+	{
+		var father = o.attr( "data-father" );
+		if( father ) $("#chks_"+father).prop("checked", true);
+	}
+	else
+	{
+		var child  = o.attr( "data-child" );
+		if( child ) $("#chks_"+child).prop("checked", false );
+	}
+	refreshSelectData();
+	saveCartSelect();
+	return;
+}
+function _phone_deleteConfirm( r, str )
+{
+	if( r == 1 )
+	{
+		var arr = str.split( '_' );
+		var giftid  = arr[ 0 ];
+		var hgiftid = arr[ 1 ];
+		var url  = "http://{_APIHOST_}/phone/shop.php";
+		var pars = "act=delcart&passport={_PASSPORT_}&corpid={_VCORPID_}&giftids="+giftid+"&xgiftid="+hgiftid+"&r=" + Math.random();
+		
+		_PHONE('DkJs.postAgent', 4, url, pars, '_phone_afterDelCart', giftid+","+hgiftid);
+	}
+}
+function refreshSelectData()
+{
+	if( _isedit ) return;
+
+	var rules  = { {_RULE-JSON_} };
+	var gifts  = { {_GIFT-JSON_} };
+	var cut    = 0;
+	var yrmb   = 0;
+	var fee    = 0;
+	var tcoin  = 0;
+	var isall  = 1;
+	var ishide = 0;
+	var inum   = 0;
+	var giftnum   = 0;
+	var text   = "";
+	
+	_ogifts = "";
+	_dfree  = 0;
+	$("input[name=chks]").each(function(){
+		inum++;
+		var o = $(this);
+		if( o.is(":checked") )
+		{
+			var giftid = o.val();
+			var father = o.attr( 'data-father' );
+			var rmb = 0;
+			var coin = 0;
+			var num = parseInt( $("#num_"+giftid).html() );
+			if( isNaN(num) ) num = 0;
+			rmb = o.attr("data-fee")*1;
+			coin = o.attr("data-coin")*parseInt(num);
+			fee += rmb;
+			tcoin += coin;
+			if( gifts[ giftid ] )
+			{
+				gifts[ giftid ].num = num;
+				gifts[ giftid ].rmb = rmb;
+			}
+			if( num > 0 )
+			{
+				giftnum=giftnum+num;
+				if( o.attr( 'data-dfree' ) > 0 && num >= o.attr( 'data-dfree' ) )
+				{
+					_dfree = 1;
+				}
+				if( father > 0 )
+				{
+					_ogifts += giftid + ":1:2:" + father;
+				}
+				else
+				{
+					yrmb += o.attr( 'data-yrmb' ) * 1;
+					_ogifts += giftid + ":" + num + ":0:0";
+				}
+				_ogifts += ",";
+			}
+		}
+		else
+		{
+			isall = 0;
+		}
+	});
+	if( rules )
+	{
+		for( var ruleid in rules )
+		{
+			var obj  = rules[ ruleid ];
+			var xnum = 0;
+			var mcut = 0;
+			var str  = obj[ 'giftids' ] + "";
+			var giftids = str.split( ',' );
+			for( var i=0; i<giftids.length; i++ )
+			{
+				var giftid = giftids[ i ];
+				if( gifts[ giftid ] )
+				{
+					if( obj[ 'rtype' ] == 1 )
+					{
+						xnum += gifts[ giftid ].num;
+					}
+					else if( obj[ 'rtype' ] == 2 )
+					{
+						xnum += gifts[ giftid ].rmb;
+					}
+					mcut += gifts[ giftid ].rmb;
+				}
+			}
+			if( xnum >= obj[ 'rnum' ] )
+			{
+				if( obj[ 'ctype' ] == 1 )
+				{
+					cut += mcut > obj[ 'cnum' ] ? obj[ 'cnum' ] : mcut;
+				}
+			}
+		}
+	}
+
+	_ormb = fee + yrmb;
+	_ocut = cut + yrmb;
+	
+	_ocoin = tcoin;
+	
+	var tcoin_text = tcoin>0?text += ' + ' + tcoin + '金币':'';
+
+	if( inum > 0 )
+	{
+		text = '<font color="red" size="15">合计：¥ ' + (fee>=cut?((fee-cut)/100):'0') + tcoin_text + '</font>'; //+ 
+		if( cut > 0 || yrmb > 0 )
+		{
+			text += '<br/><font color="black" size="12"><small>总额：¥ ' + ((fee+yrmb)/100) + tcoin_text;
+			text += ' 已优惠：¥ ' + (cut>fee?(fee+yrmb):(cut+yrmb))/100 + '</small></font>';
+		}
+	}
+	_PHONE('DkJs.setCartTotal', 4, isall, text, giftnum, giftnum>0?0:1);
+}
+function delTicketClick(giftid, money)
+{
+	var url  = "http://{_APIHOST_}/phone/shop.php";
+	var pars = "act=delticket&passport={_PASSPORT_}&corpid={_VCORPID_}&giftid="+giftid+"&money="+money+"&r=" + Math.random();
+		
+	_PHONE('DkJs.postAgent', 4, url, pars, '_phone_afterDelTicket', '');
+}
+function _phone_afterDelTicket( req, par )
+{
+	window.location.reload();
+}
+</script>
