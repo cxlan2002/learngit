@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>canvas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+<style type="text/css">
+*{margin:0;padding:0;}
+html{font-size:24px;}
+.canvas{width:0;height:0;position:absolute;left:50%;top:50%;-webkit-transform:rotate(0deg) scale(0.3);transition:all .6s ease-in;}
+.canvas:before,
+.canvas:after{content:'';width:10rem;height:10rem;position:absolute;top:50%;left:50%;margin:-5rem 0 0 -5rem;border-radius:20%;background:rgba(30, 7, 66, 0.65);z-index:10;-webkit-transform:scale(0.1);transform:scale(0.1);transition:all .6s ease-in}
+.canvas .content{width:10rem;height:10rem;position:absolute;margin:-5rem 0 0 -5rem;z-index:10;font-family:'HelveticaNeue-Light','Helvetica Neue Light','Helvetica Neue',Helvetica,Arial,sans-serif;color:#fff;text-shadow:1px 1px 3px rgba(0,0,0,0.5);font-size:20px;text-align:center;z-index:99;opacity:0.2;-webkit-transform:rotate(180deg);transition:all .4s ease-in;}
+.canvas .content svg{fill:#fff;width:3em;margin:1em auto 0.75em;}
+.canvas .content h1{font-weight:lighter;font-size:1.4em;margin:0.2em auto 0.8em;max-width:6em;}
+.canvas .content p{font-size:0.8em;}
+.canvas .circel{-webkit-animation:rotate 12s linear .6s infinite;animation:rotate 12s linear .6s infinite;}
+.canvas .circel i{width:10rem;height:10rem;position:absolute;margin:-10rem 0 0 -5rem;border-top:0.1em solid rgba(255,255,255,0.4);border-radius:50%;box-shadow:0 1em 2em rgba(0,0,0,0.3);-webkit-transform-origin:50% 100%;transform-origin:50% 100%;transition:all .6s ease-in;}
+.canvas .circel i:after{content:'';width:3rem;height:3rem;border-radius:50%;position:absolute;top:-1.7rem;left:50%;margin-left:-1.5rem;box-shadow:0 0.2em 0.4em rgba(0,0,0,0.2);}
+.canvas.rotate{-webkit-transform:rotate(180deg)  scale(1.1);}
+.canvas.rotate:before{-webkit-transform:rotate(180deg) scale(1);transform:rotate(180deg) scale(1);-webkit-animation:rotate 6s linear .6s infinite;animation:rotate 6s linear .6s infinite;}
+.canvas.rotate:after{-webkit-transform:rotate(135deg) scale(1);transform:rotate(135deg) scale(1);}
+.canvas.rotate .content{opacity:1;}
+.canvas.rotate i:nth-child(1){background:rgba(16, 63, 236, 0.75);-webkit-transform:rotate(0);transform:rotate(0);}
+.canvas.rotate i:nth-child(1):after{background:rgba(16, 63, 236, 0.75);border-radius:20%;}
+.canvas.rotate i:nth-child(2){background:rgba(37, 172, 162, 0.75);-webkit-transform:rotate(45deg);transform:rotate(45deg);}
+.canvas.rotate i:nth-child(2):after{background:rgba(37, 172, 162, 0.75);}
+.canvas.rotate i:nth-child(3){background:rgba(233, 124, 32, 0.75);-webkit-transform:rotate(90deg);transform:rotate(90deg);}
+.canvas.rotate i:nth-child(3):after{background:rgba(233, 124, 32, 0.75);border-radius:20%;}
+.canvas.rotate i:nth-child(4){background:rgba(235, 67, 35, 0.75);-webkit-transform:rotate(135deg);transform:rotate(135deg);}
+.canvas.rotate i:nth-child(4):after{background:rgba(235, 67, 35, 0.75);}
+.canvas.rotate i:nth-child(5){background:rgba(190, 28, 65, 0.75);-webkit-transform:rotate(180deg);transform:rotate(180deg);}
+.canvas.rotate i:nth-child(5):after{background:rgba(190, 28, 65, 0.75);border-radius:20%;}
+.canvas.rotate i:nth-child(6){background:rgba(208, 57, 159, 0.75);-webkit-transform:rotate(225deg);transform:rotate(225deg);}
+.canvas.rotate i:nth-child(6):after{background:rgba(208, 57, 159, 0.75);}
+.canvas.rotate i:nth-child(7){background:rgba(150, 32, 198, 0.75);-webkit-transform:rotate(270deg);transform:rotate(270deg);}
+.canvas.rotate i:nth-child(7):after{background:rgba(150, 32, 198, 0.75);border-radius:20%;}
+.canvas.rotate i:nth-child(8){background:rgba(95, 33, 203, 0.75);-webkit-transform:rotate(315deg);transform:rotate(315deg);}
+.canvas.rotate i:nth-child(8):after{background:rgba(95, 33, 203, 0.75);}
+
+@-webkit-keyframes 'rotate'{
+	0%{
+		-webkit-transform:rotate(0);
+	}
+	100%{
+		-webkit-transform:rotate(360deg);
+	}
+}
+@keyframes 'rotate'{
+	0%{
+		-webkit-transform:rotate(0);
+		        transform:rotate(0);
+	}
+	100%{
+		-webkit-transform:rotate(360deg);
+		        transform:rotate(360deg);
+	}
+}
+</style>
+<script>
+function hasClass(obj, cls) {
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+}
+
+function addClass(obj, cls) {
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+}
+
+window.onload = function(){
+	var canvas = document.getElementById('canvas');
+	addClass(canvas, 'rotate');
+}
+</script>
+</head>
+<body>
+	<div id="canvas" class="canvas">
+		 <div class="content">
+			<svg viewBox="0 0 160 164" xmlns="http://www.w3.org/2000/svg">
+				<g>
+					<g id="svg_1">
+					<path d="m127.805969,90.003128c0.224838,24.213104 21.241287,32.270615 21.474121,32.373459c-0.177704,0.56826 -3.358078,11.482742 -11.072464,22.756622c-6.668747,9.746841 -13.590027,19.457977 -24.493088,19.659103c-10.713348,0.197403 -14.158287,-6.353043 -26.406677,-6.353043c-12.24469,0 -16.072174,6.151901 -26.213551,6.550446c-10.52422,0.398254 -18.538303,-10.539917 -25.26247,-20.251053c-13.740021,-19.864456 -24.24024,-56.132286 -10.1411,-80.613663c7.004152,-12.157551 19.521101,-19.85622 33.10713,-20.053638c10.334515,-0.197132 20.089069,6.952717 26.406689,6.952717c6.313614,0 18.167473,-8.59832 30.628998,-7.335548c5.21682,0.217129 19.860519,2.1073 29.263641,15.871029c-0.75766,0.469692 -17.472931,10.200527 -17.291229,30.443592m-20.134499,-59.456692c5.587379,-6.7633 9.348007,-16.178439 8.322067,-25.546439c-8.053787,0.32369 -17.792625,5.36682 -23.569427,12.126399c-5.177124,5.985922 -9.711121,15.566772 -8.48777,24.749359c8.976891,0.69453 18.147476,-4.561718 23.73513,-11.329308"/>
+					</g>
+				</g>
+			</svg>
+			<h1>The epicenter of change.</h1>
+			<p>WWDC15</p>
+		</div>
+		<div id="circelWrap" class="circel">
+			<i></i>
+			<i></i>
+			<i></i>
+			<i></i>
+			<i></i>
+			<i></i>
+			<i></i>
+			<i></i>
+		</div>
+	</div>
+</body>
+</html>
